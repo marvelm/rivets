@@ -6,3 +6,9 @@ authors = ["Marvel Mathew <m@marvelmathew.ca>"]
 [dependencies]
 iron = "*"
 time = "*"
+
+[dependencies.selectors]
+git = "https://github.com/servo/rust-selectors.git"
+
+[dependencies.html5ever]
+git = "https://github.com/servo/html5ever.git"
