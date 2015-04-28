@@ -1,0 +1,8 @@
+[package]
+name = "rivets"
+version = "0.1.0"
+authors = ["Marvel Mathew <m@marvelmathew.ca>"]
+
+[dependencies]
+iron = "*"
+time = "*"
