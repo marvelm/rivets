@@ -1,7 +1,7 @@
 extern crate iron;
 extern crate time;
 
-use iron::{Chain, Iron, Request, IronResult, Response};
+use iron::{status, Chain, Iron, Request, IronResult, Response};
 use iron::middleware::{BeforeMiddleware, AfterMiddleware};
 use iron::typemap::Key;
 use time::precise_time_ns;
@@ -20,16 +20,16 @@ impl BeforeMiddleware for ResponseTime {
 impl AfterMiddleware for ResponseTime {
     fn after(&self, req: &mut Request, res: Response) -> IronResult<Response> {
         let delta = precise_time_ns() - *req.extensions.get::<ResponseTime>().unwrap();
-        println!("Request took: {} ns", delta);
+        println!("Request took: {} ms", (delta as f64) / 1000000.0);
         Ok(res)
     }
 }
 
 fn hello_world(_: &mut Request) -> IronResult<Response> {
-    Ok(Response::with((iron::status::Ok, "Hello World")))
+    Ok(Response::with((status::Ok, "Hello World")))
 }
 
-fn main() {
+fn run() {
     let mut chain = Chain::new(hello_world);
     chain.link_before(ResponseTime);
     chain.link_after(ResponseTime);
