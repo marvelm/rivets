@@ -11,4 +11,4 @@ time = "*"
 git = "https://github.com/servo/rust-selectors.git"
 
 [dependencies.html5ever]
-git = "https://github.com/servo/html5ever.git"
+git = "https://github.com/marvelm/html5ever.git"

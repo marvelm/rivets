@@ -9,4 +9,3 @@ reload-run:
 
 reload-build:
 	@nodemon -e rs,toml -x "cargo build"
-
